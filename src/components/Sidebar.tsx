@@ -123,7 +123,7 @@ const Sidebar = () => {
       )}
       
       <div className={cn(
-        "sidebar-enhanced border-r transition-all duration-300 flex flex-col bg-white",
+        "sidebar-glass sidebar-enhanced border-r transition-all duration-300 flex flex-col",
         isCollapsed ? "w-16" : "w-64",
         isMobile && isSidebarOpen && "mobile-open"
       )}>
