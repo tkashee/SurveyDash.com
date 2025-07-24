@@ -67,11 +67,11 @@ const PlanUpgrade = () => {
 
       {/* Mobile: Horizontal Scroll, Desktop: Grid */}
       <div className="md:hidden">
-        <div className="flex gap-4 overflow-x-auto pb-4 px-4 scrollbar-hide snap-x snap-mandatory">
+        <div className="flex gap-4 overflow-x-auto pb-4 px-4 scrollbar-hide snap-x snap-mandatory horizontal-scroll-container">
           {planData.surveyPlans.map((plan) => (
             <Card 
               key={plan.planName} 
-              className={`relative flex-shrink-0 w-72 snap-center transition-all duration-300 hover:shadow-glow ${
+              className={`relative flex-shrink-0 w-72 snap-center transition-all duration-300 hover:shadow-glow plan-card ${
                 currentPlan === plan.planName 
                   ? 'ring-2 ring-primary shadow-glow bg-gradient-to-br from-primary/10 via-blue-100/50 to-purple-100/50' 
                   : getPlanColor(plan.planName)
