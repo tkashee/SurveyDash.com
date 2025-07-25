@@ -1,0 +1,133 @@
+/* Survey Limit Modal - Clean Static Background */
+:root {
+  --text-bright: #ffffff;
+  --text-light: #f8fafc;
+  --text-muted: #cbd5e1;
+  --bg-primary: rgba(15, 23, 42, 0.9);
+  --bg-secondary: rgba(30, 41, 59, 0.8);
+  --border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Small modal container */
+.survey-limit-small-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Simple dark backdrop */
+.survey-limit-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+/* Clean modal card */
+.survey-limit-small-card {
+  position: relative;
+  width: 100%;
+  max-width: 20rem;
+  background: var(--bg-primary);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Enhanced font colors for maximum visibility */
+.survey-limit-small-card * {
+  color: var(--text-bright) !important;
+}
+
+.survey-limit-small-card .title {
+  color: var(--text-bright) !important;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.survey-limit-small-card .subtitle {
+  color: var(--text-light) !important;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.survey-limit-small-card .text-slate-200,
+.survey-limit-small-card .text-slate-300 {
+  color: var(--text-light) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.survey-limit-small-card .text-white {
+  color: var(--text-bright) !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+/* Lock icon styling */
+.survey-limit-lock-icon {
+  position: relative;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+}
+
+/* Progress bar styling */
+.survey-limit-compact-progress {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+  height: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.survey-limit-compact-progress-bar {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899, #3b82f6);
+  height: 100%;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+/* Button styling */
+.survey-limit-compact-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-bright);
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.survey-limit-compact-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.survey-limit-compact-button-primary {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: white;
+  border: none;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.5);
+}
+
+.survey-limit-compact-button-primary:hover {
+  background: linear-gradient(135deg, #ec4899, #3b82f6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.6);
+}
+
+/* Responsive small modal */
+@media (max-width: 640px) {
+  .survey-limit-small-card {
+    max-width: 18rem;
+    margin: 0.5rem;
+  }
+}

@@ -1,0 +1,163 @@
+/* Enhanced Survey Limit Modal - Moving Glass Theme Inside Container Only */
+:root {
+  --text-primary: #f8fafc;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  --glass-purple: rgba(139, 92, 246, 0.3);
+  --glass-pink: rgba(236, 72, 153, 0.3);
+  --glass-blue: rgba(59, 130, 246, 0.3);
+  --glass-overlay: rgba(15, 23, 42, 0.4);
+}
+
+/* Moving glass background - inside container only */
+.survey-limit-enhanced-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  background: linear-gradient(
+    -45deg,
+    var(--glass-purple),
+    var(--glass-pink),
+    var(--glass-blue),
+    var(--glass-purple)
+  );
+  background-size: 400% 400%;
+  animation: movingGlass 8s ease-in-out infinite;
+  overflow: hidden;
+}
+
+@keyframes movingGlass {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glass overlay for the moving background */
+.survey-limit-enhanced-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--glass-overlay);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+}
+
+/* Enhanced font styling for visibility over glass */
+.survey-limit-enhanced-fonts {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.survey-limit-enhanced-fonts .title {
+  color: var(--text-primary) !important;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: -0.025em;
+}
+
+.survey-limit-enhanced-fonts .subtitle {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.01em;
+}
+
+/* Ensure all text is visible over glass background */
+.survey-limit-small-card * {
+  color: var(--text-primary) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.survey-limit-small-card .text-slate-200 {
+  color: var(--text-secondary) !important;
+}
+
+.survey-limit-small-card .text-slate-300 {
+  color: var(--text-muted) !important;
+}
+
+/* Progress bar with glass effect */
+.survey-limit-enhanced-progress {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 9999px;
+  overflow: hidden;
+  height: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.survey-limit-enhanced-progress-bar {
+  background: linear-gradient(90deg, var(--glass-purple), var(--glass-pink));
+  background-size: 200% 100%;
+  animation: progressGlow 3s ease-in-out infinite;
+  height: 100%;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+@keyframes progressGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Button styling with glass effect */
+.survey-limit-enhanced-button {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.survey-limit-enhanced-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.survey-limit-enhanced-button-primary {
+  background: linear-gradient(135deg, var(--glass-purple), var(--glass-pink));
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+}
+
+.survey-limit-enhanced-button-primary:hover {
+  background: linear-gradient(135deg, var(--glass-pink), var(--glass-blue));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5);
+}
+
+/* Responsive enhancements */
+@media (max-width: 640px) {
+  .survey-limit-enhanced-fonts .title {
+    font-size: 1.125rem;
+  }
+  .survey-limit-enhanced-fonts .subtitle {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .survey-limit-enhanced-bg,
+  .survey-limit-enhanced-progress-bar {
+    animation: none;
+  }
+}

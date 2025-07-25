@@ -1,0 +1,25 @@
+/* Survey Limit Modal - Transparent Background with Glass Container */
+/* This makes the modal background transparent while keeping glass theme inside */
+
+/* Make modal overlay background transparent */
+.survey-limit-small-modal .survey-limit-backdrop {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Ensure glass effects stay inside the container */
+.survey-limit-small-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .survey-limit-small-card {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}

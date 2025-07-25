@@ -1,0 +1,312 @@
+/* Survey Limit Modal - Moving Glass Theme with Fade Purple */
+:root {
+  /* Purple glass theme colors */
+  --purple-glass-bg: rgba(147, 51, 234, 0.15);
+  --purple-glass-border: rgba(168, 85, 247, 0.3);
+  --purple-glass-shadow: 0 8px 32px 0 rgba(147, 51, 234, 0.25);
+  --purple-glass-backdrop: blur(20px);
+  --purple-primary: #9333ea;
+  --purple-secondary: #a855f7;
+  --purple-accent: #c084fc;
+  --purple-dark: #7e22ce;
+  --purple-light: #e9d5ff;
+}
+
+/* Dark mode purple variables */
+.dark {
+  --purple-glass-bg: rgba(88, 28, 135, 0.75);
+  --purple-glass-border: rgba(168, 85, 247, 0.2);
+  --purple-glass-shadow: 0 8px 32px 0 rgba(147, 51, 234, 0.15);
+}
+
+/* Moving glass modal container */
+.survey-limit-glass-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Animated gradient background */
+.survey-limit-glass-backdrop {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(147, 51, 234, 0.1) 0%,
+    rgba(168, 85, 247, 0.15) 25%,
+    rgba(196, 181, 253, 0.2) 50%,
+    rgba(168, 85, 247, 0.15) 75%,
+    rgba(147, 51, 234, 0.1) 100%
+  );
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Floating glass particles */
+.glass-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glass-particle {
+  position: absolute;
+  background: linear-gradient(
+    45deg,
+    rgba(168, 85, 247, 0.4),
+    rgba(196, 181, 253, 0.2)
+  );
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.glass-particle:nth-child(1) {
+  width: 4px;
+  height: 4px;
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.glass-particle:nth-child(2) {
+  width: 6px;
+  height: 6px;
+  top: 60%;
+  left: 80%;
+  animation-delay: 2s;
+}
+
+.glass-particle:nth-child(3) {
+  width: 3px;
+  height: 3px;
+  top: 80%;
+  left: 30%;
+  animation-delay: 4s;
+}
+
+.glass-particle:nth-child(4) {
+  width: 5px;
+  height: 5px;
+  top: 30%;
+  left: 70%;
+  animation-delay: 1s;
+}
+
+.glass-particle:nth-child(5) {
+  width: 4px;
+  height: 4px;
+  top: 70%;
+  left: 20%;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Enhanced glass modal card */
+.survey-limit-glass-card {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  background: var(--purple-glass-bg);
+  backdrop-filter: var(--purple-glass-backdrop);
+  -webkit-backdrop-filter: var(--purple-glass-backdrop);
+  border: 1px solid var(--purple-glass-border);
+  border-radius: 1.5rem;
+  box-shadow: var(--purple-glass-shadow);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.survey-limit-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(168, 85, 247, 0.1) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Glass header section */
+.survey-limit-glass-header {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+/* Glass icon container */
+.survey-limit-glass-icon {
+  position: relative;
+  background: linear-gradient(135deg, var(--purple-primary), var(--purple-secondary));
+  box-shadow: 0 4px 20px rgba(147, 51, 234, 0.4);
+}
+
+.survey-limit-glass-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: iconShimmer 2s ease-in-out infinite;
+}
+
+@keyframes iconShimmer {
+  0%, 100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+/* Glass progress bar */
+.survey-limit-glass-progress {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.survey-limit-glass-progress-bar {
+  background: linear-gradient(90deg, var(--purple-primary), var(--purple-secondary), var(--purple-accent));
+  background-size: 200% 100%;
+  animation: progressGlow 2s ease-in-out infinite;
+}
+
+@keyframes progressGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Glass buttons */
+.survey-limit-glass-button {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.survey-limit-glass-button:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: rgba(168, 85, 247, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
+}
+
+.survey-limit-glass-button-primary {
+  background: linear-gradient(135deg, var(--purple-primary), var(--purple-secondary));
+  border: none;
+  box-shadow: 0 4px 15px rgba(147, 51, 234, 0.4);
+}
+
+.survey-limit-glass-button-primary:hover {
+  background: linear-gradient(135deg, var(--purple-secondary), var(--purple-accent));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.5);
+}
+
+/* Glass content cards */
+.survey-limit-glass-content {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  border-radius: 1rem;
+}
+
+/* Glass badges */
+.survey-limit-glass-badge {
+  background: linear-gradient(135deg, var(--purple-primary), var(--purple-secondary));
+  color: white;
+  box-shadow: 0 2px 8px rgba(147, 51, 234, 0.3);
+}
+
+/* Responsive glass effects */
+@media (max-width: 768px) {
+  .survey-limit-glass-card {
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+  
+  .glass-particles {
+    display: none;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .survey-limit-glass-backdrop,
+  .glass-particles,
+  .survey-limit-glass-card::before,
+  .survey-limit-glass-icon::before,
+  .survey-limit-glass-progress-bar,
+  .survey-limit-glass-button {
+    animation: none;
+  }
+}
+
+/* Dark mode glass effects */
+.dark .survey-limit-glass-card {
+  background: rgba(88, 28, 135, 0.75);
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.dark .survey-limit-glass-header {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(168, 85, 247, 0.15);
+}
+
+/* Hover states for glass elements */
+.survey-limit-glass-button:hover .lucide {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+/* Focus states for accessibility */
+.survey-limit-glass-button:focus {
+  outline: 2px solid var(--purple-accent);
+  outline-offset: 2px;
+}

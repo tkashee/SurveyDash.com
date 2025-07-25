@@ -1,4 +1,4 @@
-import { useSurveyData } from "@/hooks/useSurveyData";
+ import { useSurveyData } from "@/hooks/useSurveyData";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +8,7 @@ import { useState } from "react";
 import SurveyQuestion from "@/components/SurveyQuestion";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
+import SurveyLimitModal from "@/components/SurveyLimitModal";
 
 interface Question {
   id: string;
@@ -36,6 +37,7 @@ const SurveysPage = () => {
   const navigate = useNavigate();
   const [activeSurvey, setActiveSurvey] = useState<string | null>(null);
   const [surveyQuestions, setSurveyQuestions] = useState<Question[]>([]);
+  const [showLimitModal, setShowLimitModal] = useState(false);
 
   if (!surveyData) return null;
 
@@ -43,7 +45,7 @@ const SurveysPage = () => {
   const availableSurveys = getAvailableSurveys();
   const userProgress = surveyData.userProgress;
 
-    const handleStartSurvey = (surveyId: string) => {
+  const handleStartSurvey = (surveyId: string) => {
     if (!currentPlan) {
       toast({
         title: "No Plan Selected",
@@ -54,12 +56,8 @@ const SurveysPage = () => {
     }
 
     if (userProgress.surveysCompletedToday >= currentPlan.dailySurvey) {
-      toast({
-        title: "Daily Limit Reached",
-        description: `You've completed your daily limit of ${currentPlan.dailySurvey} surveys. Please upgrade your plan to continue.`,
-        variant: "destructive"
-      });
-      navigate("/plans");
+      // Show modal instead of toast and redirect
+      setShowLimitModal(true);
       return;
     }
 
@@ -151,8 +149,13 @@ const SurveysPage = () => {
                     <Button 
                       size="sm" 
                       className="bg-gradient-primary hover:opacity-90 w-full md:w-auto"
-                      onClick={() => handleStartSurvey(survey.id)}
-                      disabled={userProgress.surveysCompletedToday >= (currentPlan?.dailySurvey || 0)}
+                      onClick={() => {
+                        if (userProgress.surveysCompletedToday >= (currentPlan?.dailySurvey || 0)) {
+                          setShowLimitModal(true);
+                        } else {
+                          handleStartSurvey(survey.id);
+                        }
+                      }}
                     >
                       {userProgress.surveysCompletedToday >= (currentPlan?.dailySurvey || 0) ? 'Limit Reached' : 'Start Survey'}
                     </Button>
@@ -163,6 +166,14 @@ const SurveysPage = () => {
           </div>
         )}
       </main>
+
+      <SurveyLimitModal
+        isOpen={showLimitModal}
+        onClose={() => setShowLimitModal(false)}
+        currentPlanName={currentPlan?.planName || "Free"}
+        dailyLimit={currentPlan?.dailySurvey || 0}
+        surveysCompletedToday={userProgress.surveysCompletedToday}
+      />
     </div>
   );
 };
